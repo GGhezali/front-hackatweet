@@ -8,7 +8,7 @@ function Login() {
         <h2 className={styles.text}>Join Hackatweet today.</h2>
         <Link href="/signup"><button className={styles.signup}>Sign up</button></Link>
         <h4 className={styles.text}>Already have an account ?</h4>
-        <button className={styles.signin}>Sign in</button>
+        <Link href="/signin"><button className={styles.signin}>Sign in</button></Link>
     </div>
   );
 }
