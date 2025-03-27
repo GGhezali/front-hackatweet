@@ -13,11 +13,12 @@ function Home() {
   const user = useSelector((state) => state.user.value);
   
   useEffect(() => {
-    fetch("http://localhost:3000/tweets/")
+    fetch("http://localhost:3000/tweet")
       .then((response) => response.json())
       .then((data) => {
-        if (data) {
-          setTweetList(data)
+        console.log("data =>", data);
+        if (data.data) {
+          setTweetList(data.data)
         }
       });
   }, []);

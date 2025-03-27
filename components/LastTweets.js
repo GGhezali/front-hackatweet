@@ -6,7 +6,7 @@ function LastTweets({firstname, username, time, content, usersLike, isTrash, isL
 
   const handleHeartClick = () => {
     if (isLike) {
-      fetch("http://localhost:3000/tweets//deleteUserLike", {
+      fetch("http://localhost:3000/tweets/deleteUserLike", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ username, content }),
@@ -14,7 +14,7 @@ function LastTweets({firstname, username, time, content, usersLike, isTrash, isL
         .then((response) => response.json())
         .then((data) => console.log(data));
     } else {
-      fetch("http://localhost:3000/tweets//addUserLike", {
+      fetch("http://localhost:3000/tweets/addUserLike", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ username, content }),
@@ -46,7 +46,7 @@ function LastTweets({firstname, username, time, content, usersLike, isTrash, isL
       </div>
       <div className={styles.icons}>
         <FontAwesomeIcon style={style} icon={faHeart} onClick={() => handleHeartClick()}/>
-        {/* <hspan>{usersLike.length}</hspan> */}
+        <span>{/* {usersLike.length} */}</span>
         {isTrash && <FontAwesomeIcon icon={faTrash} />}
       </div>
     </div>
