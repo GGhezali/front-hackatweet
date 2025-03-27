@@ -2,7 +2,7 @@ import styles from "../styles/Tweet.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { inverse } from "../reducers/trigger";
-import trigger from "../reducers/trigger"
+import trigger from "../reducers/trigger";
 
 function Tweet() {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function Tweet() {
       .then((response) => response.json())
       .then((data) => {
           setContenu("");
-          dispatch(inverse(trigger))
+          dispatch(inverse(trigger));
       });
   };
 
