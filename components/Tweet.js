@@ -23,7 +23,7 @@ let pattern = /(^|\B)#(?![0-9_]+\b)([a-zA-Z0-9_]{1,})(\b|\r)/g
     fetch("http://localhost:3000/tweet", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({firstname: users.firstname, username: users.username, content: contenu, time: date}),
+      body: JSON.stringify({firstname: users.firstname, username: users.username, content: contenu, time: date, hashtagList: contenu.match(pattern)}),
     })
       .then((response) => response.json())
       .then((data) => {
