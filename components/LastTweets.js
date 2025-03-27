@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { inverse } from "../reducers/trigger";
 import trigger from "../reducers/trigger";
 
+const moment = require("moment");
+
 function LastTweets({
   firstname,
   username,
@@ -53,6 +55,15 @@ function LastTweets({
       dispatch(inverse(trigger));
   }
 
+
+  const creationDate = moment(time).fromNow();
+  //const now = moment(new Date());
+  //const creationDate = moment(time)
+  //const duration = moment.duration(now.diff(creationDate));
+  //const hours = duration.asMinutes();
+
+
+
   let style = {};
   if (isLike) {
     style = { color: "#ff0000" };
@@ -67,7 +78,7 @@ function LastTweets({
         <div className={styles.contact}>
           <span>{firstname}</span>
           <span>@{username}</span>
-          <span>{time}</span>
+          <span>{creationDate}</span>
         </div>
       </div>
       <div className={styles.content}>{content}</div>
