@@ -1,0 +1,33 @@
+.login {
+    background-color: #151d27;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    color: white;
+    font-weight: 800;
+}
+
+.signup {
+    width: 150px;
+    height: 40px;
+    color: white;
+    font-weight: bold;
+    background-color: #3690ed;
+    border: solid #3690ed;
+    border-radius: 20px;
+}
+
+.signin {
+    width: 150px;
+    height: 40px;
+    color: #287dbb;
+    font-weight: bold;
+    background-color: #151d27;
+    border: 1px solid grey;
+    border-radius: 20px;
+}
