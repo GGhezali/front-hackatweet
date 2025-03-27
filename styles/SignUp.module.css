@@ -1,0 +1,42 @@
+.login {
+    background-color: #151d27;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    color: white;
+    font-weight: 800;
+}
+
+.userInfos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup {
+    width: 250px;
+    height: 40px;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+    border: solid white;
+    border-radius: 20px;
+}
+
+.inputs {
+    width: 250px;
+    height: 50px;
+    color: #287dbb;
+    font-weight: bold;
+    background-color: #151d27;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
