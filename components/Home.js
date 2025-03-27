@@ -3,14 +3,20 @@ import LastTweets from "./LastTweets";
 import Tweet from "./Tweet";
 import Trends from "./Trends";
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from "react";
+import trigger from "../reducers/trigger"
+import { logout } from "../reducers/user";
+
 
 function Home() {
+
+  const dispatch = useDispatch()
 
   const [tweetList, setTweetList] = useState([]);
 
   const user = useSelector((state) => state.user.value);
+  const trigger = useSelector((state) => state.trigger.value)
   
   useEffect(() => {
     fetch("http://localhost:3000/tweet")
@@ -18,10 +24,13 @@ function Home() {
       .then((data) => {
         console.log("data =>", data);
         if (data.data) {
+          data.data.sort(function(a,b){
+            return new Date(b.time) - new Date(a.time);
+          });
           setTweetList(data.data)
         }
       });
-  }, []);
+  }, [trigger]);
 
     const lastTweets = tweetList.map((data, i) => {
           let isTrash = false;
@@ -35,6 +44,11 @@ function Home() {
           return <LastTweets key={i} {...data} isTrash={isTrash} isLike={isLike}/>
         });
 
+const logoutOnClick = () => {
+  dispatch(logout())
+  window.location.href = "http://localhost:3001"
+}
+
   return (
     <div className={styles.home}>
       <div className={styles.leftcontent}>
@@ -47,12 +61,12 @@ function Home() {
               <img src="avatar.jpg" className={styles.avatar} />
             </div>
             <div className={styles.info}>
-              <h3>FIRSTNAME</h3>
-              <h4>@USERNAME</h4>
+              <h3>{user.firstname}</h3>
+              <h4>@{user.username}</h4>
             </div>
           </div>
           <div>
-            <button className={styles.logout}>LOGOUT</button>
+            <button className={styles.logout} onClick={() => logoutOnClick()} >LOGOUT</button>
           </div>
         </div>
       </div>

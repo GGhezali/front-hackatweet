@@ -1,30 +1,38 @@
 import styles from "../styles/Tweet.module.css";
-import { post } from "../reducers/tweet";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+import { inverse } from "../reducers/trigger";
+import trigger from "../reducers/trigger";
 
 function Tweet() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user.value);
+  const trigger = useSelector((state) => state.trigger.value)
   const [contenu, setContenu] = useState("");
 
-console.log(users.token);
+  let count = contenu.length
+  let disabled = false
+  if (count > 279) {
+    disabled = true
+  }
 
+let pattern = /(^|\B)#(?![0-9_]+\b)([a-zA-Z0-9_]{1,})(\b|\r)/g
 
   const postOnClick = () => {
+    const date = new Date()
     fetch("http://localhost:3000/tweet", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({content: contenu}),
+      body: JSON.stringify({firstname: users.firstname, username: users.username, content: contenu, time: date}),
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.result) {        
-          dispatch(post({content: data.newDoc.content}));
           setContenu("");
-        }
+          dispatch(inverse(trigger));
       });
   };
+
+
 
   return (
     <div className={styles.tweet}>
@@ -38,10 +46,11 @@ console.log(users.token);
           placeholder="What's up?"
           onChange={(e) => setContenu(e.target.value)}
           value={contenu}
+          disabled={disabled}
         ></input>
       </div>
       <div className={styles.submit}>
-        <div>0/280</div>
+        <div>{count}/280</div>
         <div>
           <button className={styles.button} onClick={() => postOnClick()}>
             Tweet
