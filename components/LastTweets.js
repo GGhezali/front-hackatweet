@@ -16,27 +16,29 @@ function LastTweets({
   usersLike,
   isTrash,
   isLike,
+  currentUser
 }) {
   const dispatch = useDispatch();
   const trigger = useSelector((state) => state.trigger.value)
 
   const handleHeartClick = () => {
     if (isLike) {
-      //console.log("isLike true");
+      console.log("isLike true, username =>", username, currentUser);
+
       fetch("http://localhost:3000/tweet/deleteUserLike", {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ username, content }),
+        body: JSON.stringify({ currentUser, content }),
       })
         .then((response) => response.json())
         .then((data) => console.log(data));
         dispatch(inverse(trigger));
     } else {
-      //console.log("isLike false");
+      console.log("isLike false, username =>", username);
       fetch("http://localhost:3000/tweet/addUserLike", {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ username, content }),
+        body: JSON.stringify({ currentUser, content }),
       })
         .then((response) => response.json())
         .then((data) => console.log(data));

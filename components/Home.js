@@ -41,7 +41,7 @@ function Home() {
           if(data.usersLike.some((e) => e === user.username)){
             isLike = true;
           }
-          return <LastTweets key={i} {...data} isTrash={isTrash} isLike={isLike}/>
+          return <LastTweets key={i}  {...data} currentUser={user.username} isTrash={isTrash} isLike={isLike}/>
         });
 
 const logoutOnClick = () => {
