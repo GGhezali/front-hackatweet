@@ -22,7 +22,6 @@ function Home() {
     fetch("http://localhost:3000/tweet")
       .then((response) => response.json())
       .then((data) => {
-        console.log("data =>", data);
         if (data.data) {
           data.data.sort(function(a,b){
             return new Date(b.time) - new Date(a.time);
@@ -41,7 +40,7 @@ function Home() {
           if(data.usersLike.some((e) => e === user.username)){
             isLike = true;
           }
-          return <LastTweets key={i} {...data} isTrash={isTrash} isLike={isLike}/>
+          return <LastTweets key={i}  {...data} currentUser={user.username} isTrash={isTrash} isLike={isLike}/>
         });
 
 const logoutOnClick = () => {
