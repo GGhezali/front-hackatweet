@@ -1,27 +1,25 @@
 import styles from "../styles/Tweet.module.css";
-import { post } from "../reducers/tweet";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+import { inverse } from "../reducers/trigger";
+import trigger from "../reducers/trigger"
 
 function Tweet() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user.value);
+  const trigger = useSelector((state) => state.trigger.value)
   const [contenu, setContenu] = useState("");
-
-  console.log(users.token);
 
   const postOnClick = () => {
     fetch("http://localhost:3000/tweet", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: contenu }),
+      body: JSON.stringify({firstname: users.firstname, username: users.username, content: contenu}),
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.result) {
-          dispatch(post({ content: data.newDoc.content, token: users.token }));
           setContenu("");
-        }
+          dispatch(inverse(trigger))
       });
   };
 

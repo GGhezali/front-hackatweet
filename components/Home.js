@@ -5,12 +5,15 @@ import Trends from "./Trends";
 
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
+import trigger from "../reducers/trigger"
+
 
 function Home() {
 
   const [tweetList, setTweetList] = useState([]);
 
   const user = useSelector((state) => state.user.value);
+  const trigger = useSelector((state) => state.trigger.value)
   
   useEffect(() => {
     fetch("http://localhost:3000/tweet")
@@ -21,7 +24,7 @@ function Home() {
           setTweetList(data.data)
         }
       });
-  }, []);
+  }, [trigger]);
 
     const lastTweets = tweetList.map((data, i) => {
           let isTrash = false;
@@ -61,7 +64,6 @@ function Home() {
       </div>
       <div className={styles.lastTweets}>
         {lastTweets}
-        <LastTweets />
       </div>
       <div className={styles.rightcontent}>
         <div>
