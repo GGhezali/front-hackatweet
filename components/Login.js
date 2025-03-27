@@ -1,14 +1,48 @@
 import styles from '../styles/Login.module.css';
 import Link from 'next/link';
+import { Modal } from 'antd';
+import { useState } from 'react';
+import SignUp from './SignUp';
+import SignIn from './SignIn';
 
 function Login() {
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  // Modal Register Settings
+  const showRegister = () => {
+    setIsRegisterOpen(true);
+  };
+  const handleRegisterOk = () => {
+    setIsRegisterOpen(false);
+  };
+  const handleRegisterCancel = () => {
+    setIsRegisterOpen(false);
+  };
+
+  // Modal Login Settings
+  const showLogin = () => {
+    setIsLoginOpen(true);
+  };
+  const handleLoginOk = () => {
+    setIsLoginOpen(false);
+  };
+  const handleLoginCancel = () => {
+    setIsLoginOpen(false);
+  };
+
   return (
     <div className={styles.login}>
         <h1 className={styles.text}>See what's happening</h1>
         <h2 className={styles.text}>Join Hackatweet today.</h2>
-        <Link href="/signup"><button className={styles.signup}>Sign up</button></Link>
+
+        <button className={styles.signup} onClick={() => showRegister()}>Sign up</button>
+        <Modal open={isRegisterOpen} onOk={handleRegisterOk} onCancel={handleRegisterCancel}> <SignUp /> </Modal>
+
         <h4 className={styles.text}>Already have an account ?</h4>
-        <Link href="/signin"><button className={styles.signin}>Sign in</button></Link>
+
+        <button className={styles.signin} onClick={() => showLogin()}>Sign in</button>
+        <Modal open={isLoginOpen} onOk={handleLoginOk} onCancel={handleLoginCancel}> <SignIn /> </Modal>
     </div>
   );
 }
