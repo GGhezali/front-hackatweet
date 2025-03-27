@@ -20,7 +20,7 @@ function SignIn() {
                     dispatch(login({ firstname: data.firstname, username: username, token: data.token }));
                     setUsername('');
                     setPassword('');
-                    window.location.href = "http://localhost:3001/"
+                    window.location.href = "http://localhost:3001/home"
                 }
             });
     };
