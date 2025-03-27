@@ -1,25 +1,24 @@
-import styles from '../styles/SignUp.module.css';
+import styles from '../styles/SignIn.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
+import Link from 'next/link';
 
-function SignUp() {
+function SignIn() {
     const dispatch = useDispatch();
 
-    const [firstname, setFirstname] = useState('')
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleRegister = () => {
-        fetch('http://localhost:3000/users/signup', {
+    const handleLogin = () => {
+        fetch('http://localhost:3000/users/signin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ firstname: firstname, username: username, password: password }),
+            body: JSON.stringify({ username: username, password: password }),
         }).then(response => response.json())
             .then(data => {
                 if (data.result) {
                     dispatch(login({ username: username, token: data.token }));
-                    setFirstname('');
                     setUsername('');
                     setPassword('');
                     window.location.href = "http://localhost:3001/"
@@ -29,15 +28,14 @@ function SignUp() {
 
   return (
     <div className={styles.login}>
-        <h2 className={styles.text}>Create your Hackatweet account</h2>
+        <h2 className={styles.text}>Connect to Hackatweet</h2>
         <div className={styles.userInfos}>
-            <input type="text" placeholder="Firstname" className={styles.inputs} onChange={(e) => setFirstname(e.target.value)} value={firstname} />
             <input type="text" placeholder="Username" className={styles.inputs} onChange={(e) => setUsername(e.target.value)} value={username} />
 		    <input type="password" placeholder="Password" className={styles.inputs} onChange={(e) => setPassword(e.target.value)} value={password} />
-		    <button onClick={() => handleRegister()} className={styles.signup}>Sign up</button>
+		    <button onClick={() => handleLogin()} className={styles.signin}>Sign in</button>
         </div>
     </div>
   );
 }
 
-export default SignUp;
+export default SignIn;
