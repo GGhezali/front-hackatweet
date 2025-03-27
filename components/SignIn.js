@@ -17,7 +17,7 @@ function SignIn() {
         }).then(response => response.json())
             .then(data => {
                 if (data.result) {
-                    dispatch(login({ username: username, token: data.token }));
+                    dispatch(login({ username: username, token: data.newDoc.token }));
                     setUsername('');
                     setPassword('');
                     window.location.href = "http://localhost:3001/"
