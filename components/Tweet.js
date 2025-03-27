@@ -8,6 +8,9 @@ function Tweet() {
   const users = useSelector((state) => state.user.value);
   const [contenu, setContenu] = useState("");
 
+console.log(users.token);
+
+
   const postOnClick = () => {
     fetch("http://localhost:3000/tweet", {
       method: "POST",
