@@ -8,19 +8,18 @@ function Tweet() {
   const users = useSelector((state) => state.user.value);
   const [contenu, setContenu] = useState("");
 
-console.log(users.token);
-
+  console.log(users.token);
 
   const postOnClick = () => {
     fetch("http://localhost:3000/tweet", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({content: contenu}),
+      body: JSON.stringify({ content: contenu }),
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.result) {        
-          dispatch(post({content: data.newDoc.content}));
+        if (data.result) {
+          dispatch(post({ content: data.newDoc.content, token: users.token }));
           setContenu("");
         }
       });
