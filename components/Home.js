@@ -4,16 +4,25 @@ import Tweet from "./Tweet";
 import Trends from "./Trends";
 
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from "react";
 
 function Home() {
 
+  const [tweetList, setTweetList] = useState([]);
+
   const user = useSelector((state) => state.user.value);
-    
-  fetch("http://localhost:3000/tweets/")
-    .then((response) => response.json())
-    .then((data) => {
-      if (data) {
-        const lastTweets = data.map((data, i) => {
+  
+  useEffect(() => {
+    fetch("http://localhost:3000/tweets/")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          setTweetList(data)
+        }
+      });
+  }, []);
+
+    const lastTweets = tweetList.map((data, i) => {
           let isTrash = false;
           if (data.username === user.username) {
             isTrash = true;
@@ -24,10 +33,6 @@ function Home() {
           }
           return <LastTweets key={i} {...data} isTrash={isTrash} isLike={isLike}/>
         });
-      }
-      
-    });
-
 
   return (
     <div className={styles.home}>
