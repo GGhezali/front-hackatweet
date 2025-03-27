@@ -23,6 +23,7 @@ function Home() {
       .then((response) => response.json())
       .then((data) => {
         if (data.data) {
+          console.log(data.data)
           data.data.sort(function(a,b){
             return new Date(b.time) - new Date(a.time);
           });

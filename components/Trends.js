@@ -1,6 +1,9 @@
 import styles from '../styles/Trends.module.css';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Trends() {
+  
+
   return (
     <div className={styles.trends}>
         <div>
