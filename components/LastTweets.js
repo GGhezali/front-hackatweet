@@ -24,7 +24,7 @@ function LastTweets({firstname, username, time, content, usersLike, isTrash, isL
     }
   }
 
-   style = {}
+   let style = {}
    if (isLike){
      style = {"color" : "#ff0000"} 
    } 
