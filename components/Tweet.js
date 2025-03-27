@@ -11,10 +11,11 @@ function Tweet() {
   const [contenu, setContenu] = useState("");
 
   const postOnClick = () => {
+    const date = new Date()
     fetch("http://localhost:3000/tweet", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({firstname: users.firstname, username: users.username, content: contenu}),
+      body: JSON.stringify({firstname: users.firstname, username: users.username, content: contenu, time: date}),
     })
       .then((response) => response.json())
       .then((data) => {
