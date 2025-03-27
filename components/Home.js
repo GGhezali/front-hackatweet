@@ -61,7 +61,6 @@ function Home() {
       </div>
       <div className={styles.lastTweets}>
         {lastTweets}
-        <LastTweets />
       </div>
       <div className={styles.rightcontent}>
         <div>
