@@ -23,7 +23,6 @@ function Home() {
       .then((response) => response.json())
       .then((data) => {
         if (data.data) {
-          console.log(data.data)
           data.data.sort(function(a,b){
             return new Date(b.time) - new Date(a.time);
           });
@@ -53,12 +52,12 @@ const logoutOnClick = () => {
     <div className={styles.home}>
       <div className={styles.leftcontent}>
         <div>
-          <img src="TwitterLogo_white.png" className={styles.logo} />
+          <img src="mouse.png" className={styles.logo} />
         </div>
         <div className={styles.identifiant}>
           <div className={styles.ligne}>
             <div>
-              <img src="avatar.jpg" className={styles.avatar} />
+              <img src="grana-composizione.jpg" className={styles.avatar} />
             </div>
             <div className={styles.info}>
               <h3>{user.firstname}</h3>
@@ -77,7 +76,7 @@ const logoutOnClick = () => {
         {lastTweets}
       </div>
       <div className={styles.rightcontent}>
-        <div>
+        <div className={styles.titleTrend}>
           <h1>Trends</h1>
         </div>
         <div className={styles.trends}>
