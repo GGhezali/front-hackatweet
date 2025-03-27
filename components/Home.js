@@ -22,7 +22,6 @@ function Home() {
     fetch("http://localhost:3000/tweet")
       .then((response) => response.json())
       .then((data) => {
-        console.log("data =>", data);
         if (data.data) {
           setTweetList(data.data)
         }

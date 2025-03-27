@@ -27,6 +27,8 @@ let pattern = /(^|\B)#(?![0-9_]+\b)([a-zA-Z0-9_]{1,})(\b|\r)/g
     })
       .then((response) => response.json())
       .then((data) => {
+        let hashtag = data.newDoc.content.replace(pattern, "")
+        console.log(hashtag)
           setContenu("");
           dispatch(inverse(trigger));
       });
