@@ -2,7 +2,6 @@ import styles from '../styles/SignIn.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
-import Link from 'next/link';
 
 function SignIn() {
     const dispatch = useDispatch();
