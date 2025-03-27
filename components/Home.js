@@ -18,7 +18,11 @@ function Home() {
           if (data.username === user.username) {
             isTrash = true;
           }
-          return <LastTweets key={i} {...data} isTrash={isTrash}/>
+          let isLike = false;
+          if(data.usersLike.some((e) => e === user.username)){
+            isLike = true;
+          }
+          return <LastTweets key={i} {...data} isTrash={isTrash} isLike={isLike}/>
         });
       }
       
