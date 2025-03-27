@@ -10,6 +10,14 @@ function Tweet() {
   const trigger = useSelector((state) => state.trigger.value)
   const [contenu, setContenu] = useState("");
 
+  let count = contenu.length
+  let disabled = false
+  if (count > 279) {
+    disabled = true
+  }
+
+let pattern = /(^|\B)#(?![0-9_]+\b)([a-zA-Z0-9_]{1,})(\b|\r)/g
+
   const postOnClick = () => {
     const date = new Date()
     fetch("http://localhost:3000/tweet", {
@@ -24,6 +32,8 @@ function Tweet() {
       });
   };
 
+
+
   return (
     <div className={styles.tweet}>
       <div className={styles.title}>
@@ -36,10 +46,11 @@ function Tweet() {
           placeholder="What's up?"
           onChange={(e) => setContenu(e.target.value)}
           value={contenu}
+          disabled={disabled}
         ></input>
       </div>
       <div className={styles.submit}>
-        <div>0/280</div>
+        <div>{count}/280</div>
         <div>
           <button className={styles.button} onClick={() => postOnClick()}>
             Tweet
