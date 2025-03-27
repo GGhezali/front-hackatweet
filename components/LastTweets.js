@@ -2,7 +2,14 @@ import styles from "../styles/LastTweets.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function LastTweets() {
+function LastTweets({firstname, username, time, content, isLiked, isTrash}) {
+  
+  firstname: String,
+    username: String,
+    time: String,
+    content: String,
+    isLiked: Boolean,
+
   return (
     <div className={styles.lastTweets}>
       <div className={styles.info}>
@@ -10,18 +17,18 @@ function LastTweets() {
           <img src="avatar.jpg" className={styles.avatar} />
         </div>
         <div className={styles.contact}>
-          <span>FIRSTNAME</span>
-          <span>@USERNAME</span>
-          <span>5 hours</span>
+          <span>{firstname}</span>
+          <span>@{username}</span>
+          <span>{time} hours</span>
         </div>
       </div>
       <div className={styles.content}>
-        INSERT TEXT CONTENT DU TWEET EN QUESTION
+        {content}
       </div>
       <div className={styles.icons}>
         <FontAwesomeIcon icon={faHeart} />
         <hspan>count</hspan>
-        <FontAwesomeIcon icon={faTrash} />
+        {isTrash && <FontAwesomeIcon icon={faTrash} />}
       </div>
     </div>
   );
