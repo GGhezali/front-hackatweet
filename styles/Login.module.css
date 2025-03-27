@@ -20,6 +20,7 @@
     background-color: #3690ed;
     border: solid #3690ed;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .signin {
@@ -30,4 +31,13 @@
     background-color: #151d27;
     border: 1px solid grey;
     border-radius: 20px;
+    cursor: pointer;
+}
+
+.signup:hover {
+    opacity: 0.8;
+}
+
+.signin:hover {
+    opacity: 0.8;
 }
