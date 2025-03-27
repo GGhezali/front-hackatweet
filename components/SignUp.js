@@ -22,7 +22,7 @@ function SignUp() {
                     setFirstname('');
                     setUsername('');
                     setPassword('');
-                    window.location.href = "http://localhost:3001/Home"
+                    window.location.href = "http://localhost:3001/home"
                 }
             });
     };
