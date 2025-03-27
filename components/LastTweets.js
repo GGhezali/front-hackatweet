@@ -46,7 +46,7 @@ function LastTweets({firstname, username, time, content, usersLike, isTrash, isL
       </div>
       <div className={styles.icons}>
         <FontAwesomeIcon style={style} icon={faHeart} onClick={() => handleHeartClick()}/>
-        <hspan>{usersLike.length}</hspan>
+        {/* <hspan>{usersLike.length}</hspan> */}
         {isTrash && <FontAwesomeIcon icon={faTrash} />}
       </div>
     </div>
