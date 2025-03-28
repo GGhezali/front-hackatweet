@@ -1,4 +1,4 @@
-import styles from "../styles/Trends.module.css";
+import styles from "../styles/Hashtag.module.css";
 import { useSelector, useDispatch } from "react-redux";
 
 function Hashtag() {
@@ -7,8 +7,8 @@ function Hashtag() {
       <div className={styles.title}>
         <h1>Hashtag</h1>
       </div>
-      <div>
-        <input type="text" placeholder="What's up?"></input>
+      <div className={styles.content}>
+        <input className={styles.input} type="text" placeholder="What's new?"></input>
       </div>
     </div>
   );

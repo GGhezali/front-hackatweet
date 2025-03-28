@@ -94,10 +94,10 @@ const logoutOnClick = () => {
           </div>
         </div>
       </div>
-      <div className={styles.tweet}>
+      <div className={styles.tweet} style={{display: "grid"}} >
         <Tweet />
       </div>
-      <div style={{display: "none"}} >
+      <div className={styles.hashtag} style={{display: "none"}} >
         <Hashtag />
       </div>
       <div className={styles.lastTweets}>
