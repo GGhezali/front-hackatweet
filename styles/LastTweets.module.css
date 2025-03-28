@@ -1,5 +1,5 @@
 .lastTweets {
-    border-bottom: solid #2c353e;
+    border-bottom: solid #3E3E2C;
     height: 250px;
     padding: 20px 10px;
     display: flex;
@@ -36,4 +36,8 @@
 
 .icons > * {
     margin: 0 5px;
+}
+
+.grey {
+    color: #677180;
 }

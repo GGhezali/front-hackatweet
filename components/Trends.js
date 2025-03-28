@@ -1,16 +1,20 @@
 import styles from '../styles/Trends.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 
-function Trends() {
+function Trends({ hashtag, count}) {
 
+  let tweet = "Tweet"
+if (count > 1) {
+  tweet = "Tweets"
+}
 
   return (
     <div className={styles.trends}>
         <div>
-            <h4>#QUELQUECHOSE</h4>
+            <h4>{hashtag}</h4>
         </div>
         <div>
-            <span><span>Count</span> Tweets</span>
+            <span className={styles.grey}><span>{count}</span> {tweet}</span>
         </div>
 
     </div>

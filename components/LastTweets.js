@@ -79,7 +79,7 @@ function LastTweets({
     console.log("click ok");
   };
 //essayer d'ajouter le click ici
-  const dataTm = `<span style="color:#387bc9">${formattedHashtag}</span>`;
+  const dataTm = `<span style="color:#f3bc23">${formattedHashtag}</span>`;
   const changeFormat = (item) => {
     const replaceTm = item?.name.replace(formattedHashtag, dataTm);
     return ReactHtmlParser(replaceTm);
@@ -104,8 +104,9 @@ function LastTweets({
         </div>
         <div className={styles.contact}>
           <span>{firstname}</span>
-          <span>@{username}</span>
-          <span>{creationDate}</span>
+          <span className={styles.grey}>@{username}</span>
+          <span className={styles.grey}>•</span>
+          <span className={styles.grey}>{creationDate}</span>
         </div>
       </div>
       <div className={styles.content}>

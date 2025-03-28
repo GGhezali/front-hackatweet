@@ -2,6 +2,7 @@ import styles from "../styles/Home.module.css";
 import LastTweets from "./LastTweets";
 import Tweet from "./Tweet";
 import Trends from "./Trends";
+import Hashtag from "./Hashtag";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from "react";
@@ -14,11 +15,13 @@ function Home() {
   const dispatch = useDispatch()
 
   const [tweetList, setTweetList] = useState([]);
+  const [tweetCountByHashtags, setTweetCountByHashtags] = useState([]);
 
   const user = useSelector((state) => state.user.value);
   const trigger = useSelector((state) => state.trigger.value)
   
   useEffect(() => {
+    //----------------------------------------------------------------------------------------
     fetch("http://localhost:3000/tweet")
       .then((response) => response.json())
       .then((data) => {
@@ -29,6 +32,23 @@ function Home() {
           setTweetList(data.data)
         }
       });
+    //----------------------------------------------------------------------------------------
+    fetch("http://localhost:3000/hashtags")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.obj) {
+          let table = [];
+          for (let key in data.obj){
+            table.push([key, data.obj[key]]);
+          }
+          table.sort(function(a,b) {
+            return b[1] - a[1];
+          });
+          setTweetCountByHashtags(table)      
+        }
+      });
+    //----------------------------------------------------------------------------------------
+
   }, [trigger]);
 
     const lastTweets = tweetList.map((data, i) => {
@@ -42,6 +62,11 @@ function Home() {
           }
           return <LastTweets key={i}  {...data} currentUser={user.username} isTrash={isTrash} isLike={isLike}/>
         });
+    
+    const trends = tweetCountByHashtags.map((data, i) => {
+      return <Trends key={i} hashtag={data[0]} count={data[1]} />
+
+    });
 
 const logoutOnClick = () => {
   dispatch(logout())
@@ -61,7 +86,7 @@ const logoutOnClick = () => {
             </div>
             <div className={styles.info}>
               <h3>{user.firstname}</h3>
-              <h4>@{user.username}</h4>
+              <h4 className={styles.grey}>@{user.username}</h4>
             </div>
           </div>
           <div>
@@ -72,6 +97,9 @@ const logoutOnClick = () => {
       <div className={styles.tweet}>
         <Tweet />
       </div>
+      <div style={{display: "none"}} >
+        <Hashtag />
+      </div>
       <div className={styles.lastTweets}>
         {lastTweets}
       </div>
@@ -80,7 +108,7 @@ const logoutOnClick = () => {
           <h1>Trends</h1>
         </div>
         <div className={styles.trends}>
-          <Trends />
+          {trends}
         </div>
       </div>
     </div>

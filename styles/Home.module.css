@@ -4,11 +4,12 @@
     grid-template-columns: repeat(12, 1fr);
     height: 100vh;
     width: 100vw;
-    background-color: #151d26;
+    background-color: #272715;
     color: white;
     padding: 0; 
     margin: 0; 
     box-sizing: border-box; 
+    font-family: Verdana, Tahoma, sans-serif;
 }
 
 .leftcontent {
@@ -22,7 +23,7 @@
     align-items: flex-start;
     height: 100%;
     padding-left: 30px;
-    border-right: solid #2c353e;
+    border-right: solid #3E3E2C;
 
 }
 
@@ -42,20 +43,36 @@
     overflow-y: scroll;
 }
 
+.lastTweets::-webkit-scrollbar {
+    width: 0.2em;
+}
+
+.lastTweets::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
 .rightcontent {
     grid-row-start: 1;
     grid-row-end: 13;
     grid-column-start: 10;
     grid-column-end: 13;
-    border-left: solid #2c353e;
+    border-left: solid #3E3E2C;
     overflow-y: scroll;
+}
 
+.rightcontent::-webkit-scrollbar {
+    width: 0.2em;
+}
+
+.rightcontent::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
 
 
 .logo {
     height: 100px;
     width: 100px;
+    /* transform: rotate(180deg) */
 }
 
 .avatar {
@@ -71,6 +88,7 @@
 .ligne {
     display: flex;
     margin-bottom: 30px;
+    align-items: center;
 }
 
 .info{
@@ -78,7 +96,7 @@
 }
 
 .logout {
-    border-radius: 10px;
+    border-radius: 30px;
     height: 30px;
     width: 100px;
     color: white;
@@ -87,10 +105,18 @@
 }
 
 .trends {
-    background-color: #1b232c;
+    background-color: #2B2C1B;
     border-radius: 15px;
     margin: 30px 20px;
     display: flex;
     flex-direction: column;
     padding: 10px;
+}
+
+.titleTrend {
+    margin-left: 30px;
+}
+
+.grey {
+    color: #677180;
 }
