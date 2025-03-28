@@ -27,7 +27,8 @@ function SignIn() {
 
   return (
     <div className={styles.login}>
-        <h2 className={styles.text}>Connect to Hackatweet</h2>
+        <img src="mouse.png" className={styles.logo} />
+        <h2 className={styles.text}>Connect to Hackacheese</h2>
         <div className={styles.userInfos}>
             <input type="text" placeholder="Username" className={styles.inputs} onChange={(e) => setUsername(e.target.value)} value={username} />
 		    <input type="password" placeholder="Password" className={styles.inputs} onChange={(e) => setPassword(e.target.value)} value={password} />

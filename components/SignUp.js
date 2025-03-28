@@ -29,7 +29,8 @@ function SignUp() {
 
   return (
     <div className={styles.login}>
-        <h2 className={styles.text}>Create your Hackatweet account</h2>
+        <img src="mouse.png" className={styles.logo} />
+        <h2 className={styles.text}>Create your Hackacheese account</h2>
         <div className={styles.userInfos}>
             <input type="text" placeholder="Firstname" className={styles.inputs} onChange={(e) => setFirstname(e.target.value)} value={firstname} />
             <input type="text" placeholder="Username" className={styles.inputs} onChange={(e) => setUsername(e.target.value)} value={username} />

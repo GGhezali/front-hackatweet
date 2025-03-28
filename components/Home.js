@@ -120,6 +120,14 @@ function Home() {
             onClick={() => handleMouseClick()}
           />
         </div>
+        <div className={styles.likecontent}>
+          <div className={styles.titlelike}>
+            <h1>Like</h1>
+          </div>
+          <div className={styles.like}>
+            <span>Tweet liked</span>
+          </div>
+        </div>
         <div className={styles.identifiant}>
           <div className={styles.ligne}>
             <div>
