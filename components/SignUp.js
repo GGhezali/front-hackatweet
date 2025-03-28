@@ -2,6 +2,7 @@ import styles from '../styles/SignUp.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
+import Realistic from 'react-canvas-confetti/dist/presets/realistic';
 
 function SignUp() {
     const dispatch = useDispatch();
@@ -9,6 +10,7 @@ function SignUp() {
     const [firstname, setFirstname] = useState('')
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [confetti, setConfetti] = useState(false);
 
     const handleRegister = () => {
         fetch('http://localhost:3000/users/signup', {
@@ -22,6 +24,7 @@ function SignUp() {
                     setFirstname('');
                     setUsername('');
                     setPassword('');
+                    setConfetti(true);
                     window.location.href = "http://localhost:3001/home"
                 }
             });
@@ -36,6 +39,7 @@ function SignUp() {
             <input type="text" placeholder="Username" className={styles.inputs} onChange={(e) => setUsername(e.target.value)} value={username} />
 		    <input type="password" placeholder="Password" className={styles.inputs} onChange={(e) => setPassword(e.target.value)} value={password} />
 		    <button onClick={() => handleRegister()} className={styles.signup}>Sign up</button>
+            { confetti ? <Realistic autorun={{speed: 1}} /> : ''}
         </div>
     </div>
   );
