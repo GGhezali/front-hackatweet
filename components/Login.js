@@ -31,7 +31,7 @@ function Login() {
         <img src="mouse.png" className={styles.logo} />
         <div className={styles.logContent}>
           <div>
-            <h1 className={styles.text}>See what's happening</h1>
+            <h1 className={styles.title}>See what's happening</h1>
             <h2 className={styles.text}>Join Hackacheese today.</h2>
             <button className={styles.signup} onClick={() => showRegister()}>Sign up</button>
             <Modal open={isRegisterOpen} onCancel={handleRegisterCancel} className={styles.modal} footer={null}> <SignUp /> </Modal>
