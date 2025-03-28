@@ -8,6 +8,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from "react";
 import trigger from "../reducers/trigger"
 import { logout } from "../reducers/user";
+import { removeHashtag } from "../reducers/hashtag";
+import { inverse } from "../reducers/trigger";
+
 
 
 function Home() {
@@ -19,6 +22,8 @@ function Home() {
 
   const user = useSelector((state) => state.user.value);
   const trigger = useSelector((state) => state.trigger.value)
+  const hashtag = useSelector((state) => state.hashtag.value)
+
   
   useEffect(() => {
     //----------------------------------------------------------------------------------------
@@ -60,7 +65,15 @@ function Home() {
           if(data.usersLike.some((e) => e === user.username)){
             isLike = true;
           }
-          return <LastTweets key={i}  {...data} currentUser={user.username} isTrash={isTrash} isLike={isLike}/>
+          //---------------------------------------------------------------------------------------------------
+          if (! hashtag) {
+            return <LastTweets key={i}  {...data} currentUser={user.username} isTrash={isTrash} isLike={isLike}/>
+          } else if (data.hashtagList.some((e) => e === hashtag)) {
+            return <LastTweets key={i}  {...data} currentUser={user.username} isTrash={isTrash} isLike={isLike}/>
+          } else {
+            return
+          }
+          //---------------------------------------------------------------------------------------------------
         });
     
     const trends = tweetCountByHashtags.map((data, i) => {
@@ -73,11 +86,16 @@ const logoutOnClick = () => {
   window.location.href = "http://localhost:3001"
 }
 
+const handleMouseClick = () => {
+  dispatch(removeHashtag());
+  dispatch(inverse(trigger));
+}
+
   return (
     <div className={styles.home}>
       <div className={styles.leftcontent}>
         <div>
-          <img src="mouse.png" className={styles.logo} />
+          <img src="mouse.png" className={styles.logo} onClick={() => handleMouseClick()}/>
         </div>
         <div className={styles.identifiant}>
           <div className={styles.ligne}>
