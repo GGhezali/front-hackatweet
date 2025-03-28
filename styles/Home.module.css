@@ -90,6 +90,9 @@
     grid-column-start: 10;
     grid-column-end: 13;
     border-left: solid #3E3E2C;  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
@@ -153,4 +156,14 @@
 
 .grey {
     color: #677180;
+}
+
+.mouse {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.img {
+    width: 20vw;
 }
