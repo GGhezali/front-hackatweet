@@ -1,18 +1,21 @@
 import styles from '../styles/SignIn.module.css';
-import { useState } from 'react';
+import { use, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
 import Realistic from 'react-canvas-confetti/dist/presets/realistic';
+import { useRouter } from 'next/router'
+
 
 function SignIn() {
     const dispatch = useDispatch();
+    const router = useRouter()
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confetti, setConfetti] = useState(false);
 
     const handleLogin = () => {
-        fetch('http://localhost:3000/users/signin', {
+        fetch('https://back-hackatweet.vercel.app/users/signin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username: username, password: password }),
@@ -23,7 +26,7 @@ function SignIn() {
                     setUsername('');
                     setPassword('');
                     setConfetti(true);
-                    window.location.href = "http://localhost:3001/home"
+                    router.push("/home")
                 }
             });
     };

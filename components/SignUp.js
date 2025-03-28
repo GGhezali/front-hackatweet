@@ -3,9 +3,13 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../reducers/user';
 import Realistic from 'react-canvas-confetti/dist/presets/realistic';
+import { useRouter } from 'next/router'
+
 
 function SignUp() {
     const dispatch = useDispatch();
+    const router = useRouter()
+
 
     const [firstname, setFirstname] = useState('')
     const [username, setUsername] = useState('');
@@ -13,7 +17,7 @@ function SignUp() {
     const [confetti, setConfetti] = useState(false);
 
     const handleRegister = () => {
-        fetch('http://localhost:3000/users/signup', {
+        fetch('https://back-hackatweet.vercel.app/users/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ firstname: firstname, username: username, password: password }),
@@ -25,7 +29,7 @@ function SignUp() {
                     setUsername('');
                     setPassword('');
                     setConfetti(true);
-                    window.location.href = "http://localhost:3001/home"
+                    router.push("/home")
                 }
             });
     };
