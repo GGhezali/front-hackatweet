@@ -37,3 +37,11 @@
 .icons > * {
     margin: 0 5px;
 }
+
+.hashtag {
+    color: blue;
+}
+
+.content > span {
+    color: blue;
+}

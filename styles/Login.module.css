@@ -1,5 +1,5 @@
 .login {
-    background-color: #151d27;
+    background-color: #272715;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -17,8 +17,8 @@
     height: 40px;
     color: white;
     font-weight: bold;
-    background-color: #3690ed;
-    border: solid #3690ed;
+    background-color: #f3bc23;
+    border: solid #f3bc23;
     border-radius: 20px;
     cursor: pointer;
 }
@@ -26,9 +26,9 @@
 .signin {
     width: 150px;
     height: 40px;
-    color: #287dbb;
+    color: #f3bc23;
     font-weight: bold;
-    background-color: #151d27;
+    background-color: #272715;
     border: 1px solid grey;
     border-radius: 20px;
     cursor: pointer;

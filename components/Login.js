@@ -1,5 +1,4 @@
 import styles from '../styles/Login.module.css';
-import Link from 'next/link';
 import { Modal } from 'antd';
 import { useState } from 'react';
 import SignUp from './SignUp';
@@ -34,7 +33,7 @@ function Login() {
   return (
     <div className={styles.login}>
         <h1 className={styles.text}>See what's happening</h1>
-        <h2 className={styles.text}>Join Hackatweet today.</h2>
+        <h2 className={styles.text}>Join Hackacheese today.</h2>
 
         <button className={styles.signup} onClick={() => showRegister()}>Sign up</button>
         <Modal open={isRegisterOpen} onOk={handleRegisterOk} onCancel={handleRegisterCancel}> <SignUp /> </Modal>
