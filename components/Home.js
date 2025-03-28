@@ -177,7 +177,7 @@ function Home() {
         <div className={styles.identifiant}>
           <div className={styles.ligne}>
             <div>
-              <img src="grana-composizione.jpg" className={styles.avatar} />
+              <img src="cheese.jpg" className={styles.avatar} />
             </div>
             <div className={styles.info}>
               <h3>{user.firstname}</h3>

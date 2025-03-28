@@ -97,7 +97,7 @@ function LastTweets({
     <div className={styles.lastTweets}>
       <div className={styles.info}>
         <div>
-          <img src="grana-composizione.jpg" className={styles.avatar} />
+          <img src="cheese.jpg" className={styles.avatar} />
         </div>
         <div className={styles.contact}>
           <span>{firstname}</span>
