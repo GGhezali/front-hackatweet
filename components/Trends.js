@@ -20,9 +20,9 @@ if (count > 1) {
   tweet = "Tweets"
 }
   return (
-    <div className={styles.trends}>
+    <div className={styles.trends} onClick={() => handleHashtagClick()}>
         <div>
-            <h4><button onClick={() => handleHashtagClick()}>{hashtag}</button></h4>
+            <h4>{hashtag}</h4>
         </div>
         <div>
             <span className={styles.grey}><span>{count}</span> {tweet}</span>
