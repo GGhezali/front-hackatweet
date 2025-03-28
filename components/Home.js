@@ -157,6 +157,9 @@ function Home() {
           <h1>Trends</h1>
         </div>
         <div className={styles.trends}>{trends}</div>
+        <div className={styles.mouse}>
+          <img src="giphy.gif" className={styles.img}></img>
+        </div>
       </div>
     </div>
   );
