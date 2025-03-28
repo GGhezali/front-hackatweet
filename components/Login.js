@@ -12,9 +12,6 @@ function Login() {
   const showRegister = () => {
     setIsRegisterOpen(true);
   };
-  const handleRegisterOk = () => {
-    setIsRegisterOpen(false);
-  };
   const handleRegisterCancel = () => {
     setIsRegisterOpen(false);
   };
@@ -23,9 +20,6 @@ function Login() {
   const showLogin = () => {
     setIsLoginOpen(true);
   };
-  const handleLoginOk = () => {
-    setIsLoginOpen(false);
-  };
   const handleLoginCancel = () => {
     setIsLoginOpen(false);
   };
@@ -33,22 +27,19 @@ function Login() {
   return (
     <div className={styles.login}>
 
-      <div className={styles.leftContent}>
-        
-      </div>
-
-      <div className={styles.logContent}>
-        <h1 className={styles.text}>See what's happening</h1>
-        <h2 className={styles.text}>Join Hackacheese today.</h2>
-
-        <button className={styles.signup} onClick={() => showRegister()}>Sign up</button>
-        <Modal open={isRegisterOpen} onOk={handleRegisterOk} onCancel={handleRegisterCancel}> <SignUp /> </Modal>
-
-        <h4 className={styles.text}>Already have an account ?</h4>
-
-        <button className={styles.signin} onClick={() => showLogin()}>Sign in</button>
-        <Modal open={isLoginOpen} onOk={handleLoginOk} onCancel={handleLoginCancel}> <SignIn /> </Modal>
-      </div>
+      <div className={styles.leftContent}></div>
+        <img src="mouse.png" className={styles.logo} />
+        <div className={styles.logContent}>
+          <div>
+            <h1 className={styles.text}>See what's happening</h1>
+            <h2 className={styles.text}>Join Hackacheese today.</h2>
+            <button className={styles.signup} onClick={() => showRegister()}>Sign up</button>
+            <Modal open={isRegisterOpen} onCancel={handleRegisterCancel} footer={null}> <SignUp /> </Modal>
+            <h4 className={styles.text}>Already have an account ?</h4>
+            <button className={styles.signin} onClick={() => showLogin()}>Sign in</button>
+            <Modal open={isLoginOpen} onCancel={handleLoginCancel} footer={null}> <SignIn /> </Modal>
+          </div>
+        </div>
 
     </div>
   );

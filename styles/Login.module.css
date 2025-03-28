@@ -33,6 +33,17 @@
     margin-left: 50px;
 }
 
+.logo {
+    height: 100px;
+    width: 100px;
+    grid-row-start: 1;
+    grid-row-end: 13;
+    grid-column-start: 6;
+    grid-column-end: 13;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
 .text {
     color: white;
     font-weight: 800;
@@ -60,10 +71,6 @@
     cursor: pointer;
 }
 
-.signup:hover {
-    opacity: 0.8;
-}
-
-.signin:hover {
+.signup:hover, .signin:hover {
     opacity: 0.8;
 }
