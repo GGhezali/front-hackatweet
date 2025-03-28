@@ -34,10 +34,10 @@ function Login() {
             <h1 className={styles.title}>See what's happening</h1>
             <h2 className={styles.text}>Join Hackacheese today.</h2>
             <button className={styles.signup} onClick={() => showRegister()}>Sign up</button>
-            <Modal open={isRegisterOpen} onCancel={handleRegisterCancel} className={styles.modal} footer={null}> <SignUp /> </Modal>
+            <Modal open={isRegisterOpen} onCancel={handleRegisterCancel} centered className={styles.modal} footer={null}> <SignUp /> </Modal>
             <h4 className={styles.text}>Already have an account ?</h4>
             <button className={styles.signin} onClick={() => showLogin()}>Sign in</button>
-            <Modal open={isLoginOpen} onCancel={handleLoginCancel} className={styles.modal} footer={null}> <SignIn /> </Modal>
+            <Modal open={isLoginOpen} onCancel={handleLoginCancel} centered className={styles.modal} footer={null}> <SignIn /> </Modal>
           </div>
         </div>
 

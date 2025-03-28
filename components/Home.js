@@ -5,7 +5,6 @@ import Trends from "./Trends";
 import Hashtag from "./Hashtag";
 import Likes from "./Likes";
 
-
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import trigger from "../reducers/trigger";
@@ -111,7 +110,10 @@ function Home() {
           isLike={isLike}
         />
       );
-    } else if (data.hashtagList.some((e) => e === hashtag) && data.username === likes) {
+    } else if (
+      data.hashtagList.some((e) => e === hashtag) &&
+      data.username === likes
+    ) {
       return (
         <LastTweets
           key={i}
@@ -121,8 +123,7 @@ function Home() {
           isLike={isLike}
         />
       );
-    }
-    else {
+    } else {
       return;
     }
     //---------------------------------------------------------------------------------------------------
@@ -171,9 +172,7 @@ function Home() {
           <div className={styles.titlelike}>
             <h1>Likes</h1>
           </div>
-          <div className={styles.like}>
-            {_likes}
-          </div>
+          <div className={styles.like}>{_likes}</div>
         </div>
         <div className={styles.identifiant}>
           <div className={styles.ligne}>
@@ -204,8 +203,11 @@ function Home() {
           <h1>Trends</h1>
         </div>
         <div className={styles.trends}>{trends}</div>
-        <div className={styles.mouse}>
-          <img src="giphy.gif" className={styles.img}></img>
+        <div className={styles.imgcontain}>
+          <div></div>
+          <div className={styles.mouse}>
+            <div className={styles.img}></div>
+          </div>
         </div>
       </div>
     </div>
