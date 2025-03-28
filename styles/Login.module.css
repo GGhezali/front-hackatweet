@@ -65,6 +65,12 @@
     border: solid #f3bc23;
     border-radius: 20px;
     cursor: pointer;
+    box-shadow: 0 5px 0 #b88b0d;
+}
+
+.signup:active {
+    margin-top: 5px;
+    box-shadow: 0 0px 0 #b88b0d;
 }
 
 .signin {
@@ -76,6 +82,12 @@
     border: 1px solid grey;
     border-radius: 20px;
     cursor: pointer;
+    box-shadow: 0 5px 0 grey;
+}
+
+.signin:active {
+    margin-top: 5px;
+    box-shadow: 0 0px 0 grey;
 }
 
 .signup:hover, .signin:hover {
