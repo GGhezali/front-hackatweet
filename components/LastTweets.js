@@ -29,7 +29,7 @@ function LastTweets({
 
   const handleHeartClick = () => {
     if (isLike) {
-      fetch("https://back-hackatweet.vercel.app/tweet/deleteUserLike", {
+      fetch("https://back-hackatweet-six.vercel.app/tweet/deleteUserLike", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ currentUser, content }),
@@ -38,7 +38,7 @@ function LastTweets({
         .then((data) => console.log(data));
       dispatch(inverse(trigger));
     } else {
-      fetch("https://back-hackatweet.vercel.app/tweet/addUserLike", {
+      fetch("https://back-hackatweet-six.vercel.app/tweet/addUserLike", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ currentUser, content }),
@@ -50,7 +50,7 @@ function LastTweets({
   };
 
   const handleTrashClick = () => {
-    fetch("https://back-hackatweet.vercel.app/tweet/deleteTweet", {
+    fetch("https://back-hackatweet-six.vercel.app/tweet/deleteTweet", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({ content }),

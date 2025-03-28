@@ -7,32 +7,36 @@ import trigger from "../reducers/trigger";
 function Tweet() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user.value);
-  const trigger = useSelector((state) => state.trigger.value)
+  const trigger = useSelector((state) => state.trigger.value);
   const [contenu, setContenu] = useState("");
 
-  let count = contenu.length
-  let disabled = false
+  let count = contenu.length;
+  let disabled = false;
   if (count > 279) {
-    disabled = true
+    disabled = true;
   }
 
-let pattern = /(^|\B)#(?![0-9_]+\b)([a-zA-Z0-9_]{1,})(\b|\r)/g
+  let pattern = /(^|\B)#(?![0-9_]+\b)([a-zA-Z0-9_]{1,})(\b|\r)/g;
 
   const postOnClick = () => {
-    const date = new Date()
-    fetch("https://back-hackatweet.vercel.app/tweet", {
+    const date = new Date();
+    fetch("https://back-hackatweet-six.vercel.app/tweet", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({firstname: users.firstname, username: users.username, content: contenu, time: date, hashtagList: contenu.match(pattern)}),
+      body: JSON.stringify({
+        firstname: users.firstname,
+        username: users.username,
+        content: contenu,
+        time: date,
+        hashtagList: contenu.match(pattern),
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
-          setContenu("");
-          dispatch(inverse(trigger));
+        setContenu("");
+        dispatch(inverse(trigger));
       });
   };
-
-
 
   return (
     <div className={styles.tweet}>

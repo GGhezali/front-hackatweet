@@ -5,7 +5,6 @@ import Trends from "./Trends";
 import Hashtag from "./Hashtag";
 import Likes from "./Likes";
 
-
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import trigger from "../reducers/trigger";
@@ -13,13 +12,11 @@ import { logout } from "../reducers/user";
 import { removeHashtag } from "../reducers/hashtag";
 import { removeLikes } from "../reducers/likes";
 import { inverse } from "../reducers/trigger";
-import { useRouter } from 'next/router'
-
+import { useRouter } from "next/router";
 
 function Home() {
   const dispatch = useDispatch();
-  const router = useRouter()
-
+  const router = useRouter();
 
   const [tweetList, setTweetList] = useState([]);
   const [tweetCountByHashtags, setTweetCountByHashtags] = useState([]);
@@ -32,7 +29,7 @@ function Home() {
 
   useEffect(() => {
     //----------------------------------------------------------------------------------------
-    fetch("https://back-hackatweet.vercel.app/tweet")
+    fetch("https://back-hackatweet-six.vercel.app/tweet")
       .then((response) => response.json())
       .then((data) => {
         if (data.data) {
@@ -43,7 +40,7 @@ function Home() {
         }
       });
     //----------------------------------------------------------------------------------------
-    fetch("https://back-hackatweet.vercel.app/hashtags")
+    fetch("https://back-hackatweet-six.vercel.app/hashtags")
       .then((response) => response.json())
       .then((data) => {
         if (data.obj) {
@@ -58,7 +55,7 @@ function Home() {
         }
       });
     //----------------------------------------------------------------------------------------
-    fetch("https://back-hackatweet.vercel.app/tweet/likes")
+    fetch("https://back-hackatweet-six.vercel.app/likes")
       .then((response) => response.json())
       .then((data) => {
         if (data.obj) {
@@ -146,7 +143,7 @@ function Home() {
     dispatch(logout());
     dispatch(removeHashtag());
     dispatch(removeLikes());
-    router.push("/")
+    router.push("/");
   };
 
   const handleMouseClick = () => {
