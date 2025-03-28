@@ -29,8 +29,6 @@ function LastTweets({
 
   const handleHeartClick = () => {
     if (isLike) {
-      console.log("isLike true, username =>", username, currentUser);
-
       fetch("http://localhost:3000/tweet/deleteUserLike", {
         method: "POST",
         headers: { "Content-type": "application/json" },
@@ -40,7 +38,6 @@ function LastTweets({
         .then((data) => console.log(data));
       dispatch(inverse(trigger));
     } else {
-      console.log("isLike false, username =>", username);
       fetch("http://localhost:3000/tweet/addUserLike", {
         method: "POST",
         headers: { "Content-type": "application/json" },
@@ -78,7 +75,7 @@ function LastTweets({
   const handleClickHashtag = () => {
     console.log("click ok");
   };
-//essayer d'ajouter le click ici
+  //essayer d'ajouter le click ici
   const dataTm = `<span style="color:#f3bc23">${formattedHashtag}</span>`;
   const changeFormat = (item) => {
     const replaceTm = item?.name.replace(formattedHashtag, dataTm);

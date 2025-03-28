@@ -3,12 +3,15 @@ import LastTweets from "./LastTweets";
 import Tweet from "./Tweet";
 import Trends from "./Trends";
 import Hashtag from "./Hashtag";
+import Likes from "./Likes";
+
 
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import trigger from "../reducers/trigger";
 import { logout } from "../reducers/user";
 import { removeHashtag } from "../reducers/hashtag";
+import { removeLikes } from "../reducers/likes";
 import { inverse } from "../reducers/trigger";
 
 function Home() {
@@ -16,10 +19,12 @@ function Home() {
 
   const [tweetList, setTweetList] = useState([]);
   const [tweetCountByHashtags, setTweetCountByHashtags] = useState([]);
+  const [likesCountByUsername, setLikesCountByUsername] = useState([]);
 
   const user = useSelector((state) => state.user.value);
   const trigger = useSelector((state) => state.trigger.value);
   const hashtag = useSelector((state) => state.hashtag.value);
+  const likes = useSelector((state) => state.likes.value);
 
   useEffect(() => {
     //----------------------------------------------------------------------------------------
@@ -49,6 +54,21 @@ function Home() {
         }
       });
     //----------------------------------------------------------------------------------------
+    fetch("http://localhost:3000/tweet/likes")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.obj) {
+          let table = [];
+          for (let key in data.obj) {
+            table.push([key, data.obj[key]]);
+          }
+          table.sort(function (a, b) {
+            return b[1] - a[1];
+          });
+          setLikesCountByUsername(table);
+        }
+      });
+    //----------------------------------------------------------------------------------------
   }, [trigger]);
 
   const lastTweets = tweetList.map((data, i) => {
@@ -61,7 +81,7 @@ function Home() {
       isLike = true;
     }
     //---------------------------------------------------------------------------------------------------
-    if (!hashtag) {
+    if (!hashtag && !likes) {
       return (
         <LastTweets
           key={i}
@@ -71,7 +91,7 @@ function Home() {
           isLike={isLike}
         />
       );
-    } else if (data.hashtagList.some((e) => e === hashtag)) {
+    } else if (!likes && data.hashtagList.some((e) => e === hashtag)) {
       return (
         <LastTweets
           key={i}
@@ -81,7 +101,28 @@ function Home() {
           isLike={isLike}
         />
       );
-    } else {
+    } else if (!hashtag && data.username === likes) {
+      return (
+        <LastTweets
+          key={i}
+          {...data}
+          currentUser={user.username}
+          isTrash={isTrash}
+          isLike={isLike}
+        />
+      );
+    } else if (data.hashtagList.some((e) => e === hashtag) && data.username === likes) {
+      return (
+        <LastTweets
+          key={i}
+          {...data}
+          currentUser={user.username}
+          isTrash={isTrash}
+          isLike={isLike}
+        />
+      );
+    }
+    else {
       return;
     }
     //---------------------------------------------------------------------------------------------------
@@ -91,14 +132,20 @@ function Home() {
     return <Trends key={i} hashtag={data[0]} count={data[1]} />;
   });
 
+  const _likes = likesCountByUsername.map((data, i) => {
+    return <Likes key={i} username={data[0]} count={data[1]} />;
+  });
+
   const logoutOnClick = () => {
     dispatch(logout());
     dispatch(removeHashtag());
+    dispatch(removeLikes());
     window.location.href = "http://localhost:3001";
   };
 
   const handleMouseClick = () => {
     dispatch(removeHashtag());
+    dispatch(removeLikes());
     dispatch(inverse(trigger));
   };
 
@@ -122,10 +169,10 @@ function Home() {
         </div>
         <div className={styles.likecontent}>
           <div className={styles.titlelike}>
-            <h1>Like</h1>
+            <h1>Likes</h1>
           </div>
           <div className={styles.like}>
-            <span>Tweet liked</span>
+            {_likes}
           </div>
         </div>
         <div className={styles.identifiant}>
