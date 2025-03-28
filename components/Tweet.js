@@ -37,7 +37,7 @@ let pattern = /(^|\B)#(?![0-9_]+\b)([a-zA-Z0-9_]{1,})(\b|\r)/g
   return (
     <div className={styles.tweet}>
       <div className={styles.title}>
-        <h1>HOME</h1>
+        <h1>Home</h1>
       </div>
       <div className={styles.content}>
         <input

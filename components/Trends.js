@@ -10,7 +10,7 @@ function Trends() {
             <h4>#QUELQUECHOSE</h4>
         </div>
         <div>
-            <span><span>Count</span> Tweets</span>
+            <span className={styles.grey}><span>Count</span> Tweets</span>
         </div>
 
     </div>

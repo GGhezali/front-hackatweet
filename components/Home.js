@@ -2,6 +2,7 @@ import styles from "../styles/Home.module.css";
 import LastTweets from "./LastTweets";
 import Tweet from "./Tweet";
 import Trends from "./Trends";
+import Hashtag from "./Hashtag";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from "react";
@@ -61,7 +62,7 @@ const logoutOnClick = () => {
             </div>
             <div className={styles.info}>
               <h3>{user.firstname}</h3>
-              <h4>@{user.username}</h4>
+              <h4 className={styles.grey}>@{user.username}</h4>
             </div>
           </div>
           <div>
@@ -71,6 +72,9 @@ const logoutOnClick = () => {
       </div>
       <div className={styles.tweet}>
         <Tweet />
+      </div>
+      <div style={{display: "none"}} >
+        <Hashtag />
       </div>
       <div className={styles.lastTweets}>
         {lastTweets}

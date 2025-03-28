@@ -1,5 +1,5 @@
 .lastTweets {
-    border-bottom: solid #2c353e;
+    border-bottom: solid #3E3E2C;
     height: 250px;
     padding: 20px 10px;
     display: flex;
@@ -38,10 +38,6 @@
     margin: 0 5px;
 }
 
-.hashtag {
-    color: blue;
-}
-
-.content > span {
-    color: blue;
+.grey {
+    color: #677180;
 }
