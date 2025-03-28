@@ -15,7 +15,7 @@ import { inverse } from "../reducers/trigger";
 
 function Home() {
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [tweetList, setTweetList] = useState([]);
   const [tweetCountByHashtags, setTweetCountByHashtags] = useState([]);
@@ -83,12 +83,21 @@ function Home() {
 
 const logoutOnClick = () => {
   dispatch(logout())
+  dispatch(removeHashtag());
   window.location.href = "http://localhost:3001"
 }
 
 const handleMouseClick = () => {
   dispatch(removeHashtag());
   dispatch(inverse(trigger));
+}
+
+let styleTweet = {display: "grid"}
+let styleHashtag = {display: "none"}
+
+if (hashtag) {
+  styleTweet = {display: "none"}
+  styleHashtag = {display: "grid"}
 }
 
   return (
@@ -112,10 +121,10 @@ const handleMouseClick = () => {
           </div>
         </div>
       </div>
-      <div className={styles.tweet} style={{display: "grid"}} >
+      <div className={styles.tweet} style={styleTweet} >
         <Tweet />
       </div>
-      <div className={styles.hashtag} style={{display: "none"}} >
+      <div className={styles.hashtag} style={styleHashtag} >
         <Hashtag />
       </div>
       <div className={styles.lastTweets}>
