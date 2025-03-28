@@ -32,6 +32,12 @@ function Login() {
 
   return (
     <div className={styles.login}>
+
+      <div className={styles.leftContent}>
+        
+      </div>
+
+      <div className={styles.logContent}>
         <h1 className={styles.text}>See what's happening</h1>
         <h2 className={styles.text}>Join Hackacheese today.</h2>
 
@@ -42,6 +48,8 @@ function Login() {
 
         <button className={styles.signin} onClick={() => showLogin()}>Sign in</button>
         <Modal open={isLoginOpen} onOk={handleLoginOk} onCancel={handleLoginCancel}> <SignIn /> </Modal>
+      </div>
+
     </div>
   );
 }
